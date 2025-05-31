@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..//CSS/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-inner">
+                <div class="nav-logo-center">
+                    <img src="../PICTURE/logo.png" alt="Confiserie Logo" class="logo-img" />
+                </div>
+                <ul class="nav-links">
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="contact_us.html">CONTACT US</a></li>
+                </ul>
+                <div class="nav-extras">
+                    <form class="search-bar" action="#" method="get" role="search" id="mySearchBar">
+                        <input type="text" name="q" placeholder="Search..." aria-label="Search" id="searchInput"/>
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <a href="#profile" id="profile-icon" class="nav-icon" aria-label="Profile" onclick="toggleProfileMenu(); return false;">
+                        <i class="fa fa-user"></i>
+                    </a>
+                    <a href="cart.html" class="nav-icon" aria-label="Cart">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+      <section class="hero">
+    <div class="hero-cover-row">
+        <div class="cake-side">
+            <div class="cake-circle1"></div>
+            <img src="..//PICTURE/cake1.png" alt="Chocolate Cake" class="cake-img float-left" />
+        </div>
+        <div class="hero-title">
+            <h1>
+                <span class="line">SCULPTING</span><br>
+                <span class="line">SWEETNESS;</span><br>
+                <span class="line">LAYERING</span><br>
+                <span class="line">LUXURY</span>
+            </h1>
+            
+            <div class="shop-btn">
+                <a class="shop-a" href="product.html" class="shop-btn">ORDER NOW!</a>
+            </div>
+        </div>
+        <div class="cake-side">
+            <div class="cake-circle"></div>
+            <img src="..//PICTURE//cake2.jpg" alt="Liam Austin Cake" class="cake-img float-right""/>
+        </div>
+    </div>
+</section>
+ 
+ <aside id="profile-menu" class="profile-menu" role="dialog" aria-modal="true" aria-labelledby="profile-menu-title" tabindex="-1">
+    <header class="profile-menu-header">
+        <h2 id="profile-menu-title" class="profile-menu-title">Login</h2>
+        <button class="close-btn" aria-label="Close profile menu" onclick="toggleProfileMenu()">&times;</button>
+    </header>
+    <form class="profile-login-form" autocomplete="on">
+        <label for="email" class="visually-hidden">Email <span aria-hidden="true">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required autocomplete="username">
+        <label for="password" class="visually-hidden">Password <span aria-hidden="true">*</span></label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required autocomplete="current-password">
+        <button type="submit" class="sign-in-btn">Sign In</button>
+    </form>
+    <nav class="profile-menu-links" aria-label="Account actions">
+       <span>New customer? 
+  <a href="#" rel="noopener" onclick="openRegisterModal(); return false;">Create your account</a>
+</span><br>
+        <!-- FIX: Add onclick to openResetPasswordMenu() -->
+        <span>Forgot password? <a href="#" rel="noopener" onclick="openResetPasswordMenu(); return false;">Recover password</a></span>
+    </nav>
+  </aside>
+
+<!-- Overlay for closing the menu -->
+<div id="profile-menu-overlay" class="profile-menu-overlay" onclick="toggleProfileMenu()" tabindex="-1" aria-hidden="true"></div>
+<script>
+
+function toggleProfileMenu() {
+    const menu = document.getElementById('profile-menu');
+    const overlay = document.getElementById('profile-menu-overlay');
+    const isOpen = menu.style.display === 'flex';
+    menu.style.display = isOpen ? 'none' : 'flex';
+    overlay.style.display = isOpen ? 'none' : 'block';
+    if (!isOpen) {
+        menu.focus();
+    }
+} 
+</script>
+<div id="register-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="modal-title">REGISTER</span>
+      <button class="close-btn" onclick="closeRegisterModal()">&times;</button>
+    </div>
+    <form class="register-form">
+      <input type="text" placeholder="First Name" required>
+      <input type="text" placeholder="Last Name" required>
+      <input type="email" placeholder="Email " required>
+      <input type="password" placeholder="Password " required>
+      <button type="submit" class="register-btn">Register</button>
+    </form>
+    <div class="switch-auth">
+      <a href="#" onclick="closeRegisterModal(); openLoginFromRegister(); return false;">Already have an account? Login here</a>
+    </div>
+  </div>
+</div>
+<script>
+    function openRegisterModal() {
+      document.getElementById('register-modal').style.display = 'flex';
+    }
+    function closeRegisterModal() {
+      document.getElementById('register-modal').style.display = 'none';
+    }
+    // This function opens the login sidebar modal
+    function openLoginFromRegister() {
+      // Open the login menu if it exists
+      if (document.getElementById('profile-menu')) {
+        document.getElementById('profile-menu').style.display = 'flex';
+        document.getElementById('profile-menu-overlay').style.display = 'block';
+        document.getElementById('profile-menu').focus();
+      }
+    }
+</script>
+<aside id="reset-password-menu" class="profile-menu" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="reset-password-title" tabindex="-1">
+  <div class="reset-password-header">
+    <div id="reset-password-title" class="reset-password-title">RESET YOUR PASSWORD</div>
+    <button id="reset-close-btn" class="reset-close-btn" aria-label="Close reset password menu" onclick="closeResetPasswordMenu()">&times;</button>
+  </div>
+  <div id="description" class="description">
+    Lost your password? Please enter your email address. You will receive a link to create a new password via email.
+  </div>
+  <form class="reset-password-form" autocomplete="on">
+    <input type="email" class="reset-input" placeholder="Email address" required>
+    <button type="submit" class="reset-btn">Reset Password</button>
+  </form>
+</aside>
+<div id="reset-password-overlay" class="profile-menu-overlay" onclick="closeResetPasswordMenu()" tabindex="-1" aria-hidden="true"></div>
+
+
+
+<script>
+  function openResetPasswordMenu() {
+    document.getElementById('reset-password-menu').style.display = 'flex';
+    document.getElementById('reset-password-overlay').style.display = 'block';
+}
+function closeResetPasswordMenu() {
+    document.getElementById('reset-password-menu').style.display = 'none';
+    document.getElementById('reset-password-overlay').style.display = 'none';
+}
+</script>
+        
+  
+        
+          <section class="choose-section">
+    <div class="choose-header">
+        CHOOSE WHAT IS BETTER FOR YOU!
+    </div>
+    <div class="choose-options">
+        <a href="product.html" class="choose-btn" tabindex="0">
+            <div class="choose-icon">
+                <i class="fa-solid fa-cake-candles"></i>
+            </div>
+            <div class="choose-title">CAKES</div>
+            <div class="choose-desc">Choose your prefer cakes</div>
+        </a>
+        <a href="cart.html" class="choose-btn" tabindex="0">
+            <div class="choose-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <div class="choose-title">CART</div>
+            <div class="choose-desc">Add item to your cart!</div>
+        </a>
+        <a href="order.html" class="choose-btn" tabindex="0">
+            <div class="choose-icon">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <div class="choose-title">ORDERS</div>
+            <div class="choose-desc">Check your orders here!</div>
+        </a>
+    </div>
+</section>
+      
+    
+         <section class="reviews-section">
+            <h2 class="reviews-title">REVIEWS ABOUT CONFISERIE</h2>
+            <div class="review-slider" id="reviewSlider">
+                <button class="slider-arrow left" id="prevReview" aria-label="Previous review">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="review-cards">
+                    <!-- Review 1 -->
+                    <div class="review-card active">
+                        <div class="review-img-box">
+                            <img src="..//PICTURE/cake3.jpg" alt="Chocolate cake with fruits" class="review-cake-img"/>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-cake-name">ANTE MAL0II</div>
+                            <div class="review-message">
+                                mmhmm simut<br>
+                                sarap. super sarap<br>
+                                mhmm mhmm<br>
+                                mhmm
+                            </div>
+                            <div class="review-from">FROM: Rozette</div>
+                        </div>
+                    </div>
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="review-img-box">
+                            <img src="..//PICTURE/cake4.jpg" alt="Fruit Layer Cake" class="review-cake-img"/>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-cake-name">FRUIT LAYER</div>
+                            <div class="review-message">
+                                Sobrang moist and delicious!<br>
+                                Will order again for my family.<br>
+                                Thanks!
+                            </div>
+                            <div class="review-from">FROM: Marco</div>
+                        </div>
+                    </div>
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="review-img-box">
+                            <img src="..//PICTURE/cake5.jpg" alt="Chocolate cake repeat" class="review-cake-img"/>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-cake-name">CHOCOLATE DELUXE</div>
+                            <div class="review-message">
+                                Very rich chocolate flavor!<br>
+                                Bitin sa icing, pero masarap.<br>
+                                Will recommend!
+                            </div>
+                            <div class="review-from">FROM: Jenny</div>
+                        </div>
+                    </div>
+                    <!-- Review 4 -->
+                    <div class="review-card">
+                        <div class="review-img-box">
+                            <img src="..//PICTURE/cake6.jpg" alt="Another cake" class="review-cake-img"/>
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <div class="review-cake-name">BERRY BLISS</div>
+                            <div class="review-message">
+                                Perfect for birthdays!<br>
+                                Lahat ng guests happy.<br>
+                                Thank you, Confiserie!
+                            </div>
+                            <div class="review-from">FROM: Arvin</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="slider-arrow right" id="nextReview" aria-label="Next review">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+            <div class="slider-dots" id="sliderDots">
+                <span class="slider-dot active"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+                <span class="slider-dot"></span>
+            </div>
+        </section>
+    </main>
+    <footer>
+         <div class="newsletter-socials">
+    <a href="https://www.facebook.com/share/16XXc2ubaw/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+    <span class="divider"></span>
+    <a href="https://www.instagram.com/confiserie_bakery?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <span class="divider"></span>
+    <a href="https://m.me/diana202510" target="_blank" aria-label="Messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <p>&copy; 2024 Confiserie. All rights reserved.</p>
+
+    <script type="module" src="..//JAVASCRIPT/home.js"></script>
+
+</body>
+</html> 

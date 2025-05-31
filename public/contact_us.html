@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..//css/contact_us.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-inner">
+                <div class="nav-logo-center">
+                    <img src="..//PICTURE/logo.png" alt="Confiserie Logo" class="logo-img" />
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT US</a></li>
+                    <li><a href="contact_us.html">CONTACT US</a></li>
+                </ul>
+                <div class="nav-extras">
+            
+                    <a href="cart.html" class="nav-icon" aria-label="Cart">
+                        <i class="fa fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="contact-section">
+            <h2 class="contact-title">NEED TO REACH US?</h2>
+            <div class="contact-cards">
+                <a href="https://www.facebook.com/share/16XXc2ubaw/" target="_blank" class="contact-card" id="facebook-card" tabindex="0" style="text-decoration: none; color: inherit;">
+                    <div class="contact-label">FACEBOOK</div>
+                    <div class="contact-icon">
+                        <img src="..//PICTURE/facebook.png" alt="Facebook" width="60" height="60">
+                    </div>
+                    <div class="contact-info">Name: Confiserie</div>
+                </a>
+                <a href="https://www.instagram.com/confiserie_bakery?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="contact-card" id="instagram-card" tabindex="0" style="text-decoration: none; color: inherit;">
+                    <div class="contact-label">INSTAGRAM</div>
+                    <div class="contact-icon">
+                        <img src="..//PICTURE/instagram.png" alt="Instagram" width="60" height="60">
+                    </div>
+                    <div class="contact-info">@confiserie_bakery</div>
+                </a>
+                <div class="contact-card" id="otherinfo-card" tabindex="0">
+                    <div class="contact-label">OTHER INFO</div>
+                    <div class="contact-other contact-list">
+                        <div>
+                            <img src="..//PICTURE/tele.png" width="28" height="28" alt="Phone"> 
+                            0993 951 2581
+                        </div>
+                        <div>
+                            <img src="..//PICTURE/mail.png" width="28" height="28" alt="Email"> 
+                            <a href="mailto:diananicdao07@gmail.com">diananicdao07@gmail.com</a>
+                        </div>
+                        <div>
+                            <img src="..//PICTURE/loc.png" width="28" height="28" alt="Location" style="margin-right:12px;">
+                            <span>Bacolor, San Fernando,<br>Philippines</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+document.getElementById('mySearchBar').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const query = document.getElementById('searchInput').value.trim().toLowerCase();
+
+    if (query === "home") {
+      window.location.href = "index.html";
+    } else if (query === "about us" || query === "about") {
+      window.location.href = "about.html";
+    } else if (query === "contact us" || query === "contact") {
+      window.location.href = "/contact";
+    } else {
+      alert("No page found for: " + query);
+    }
+});
+    </script>
+    <footer>
+        <p>&copy; 2024 Confiserie. All rights reserved.</p>
+    </footer>
+</body>
+</html>
