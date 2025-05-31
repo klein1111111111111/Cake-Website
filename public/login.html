@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+  <script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBWSqKybfAXCBN7OnVZ1ZB8aSLq5EIHNz8",
+    authDomain: "cake-shop-website-41ff4.firebaseapp.com",
+    projectId: "cake-shop-website-41ff4",
+    storageBucket: "cake-shop-website-41ff4.firebasestorage.app",
+    messagingSenderId: "585132960880",
+    appId: "1:585132960880:web:09933a83a99edba277d8b5",
+    measurementId: "G-LC40E1NTXB"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+</html>
